@@ -2,4 +2,4 @@
 
 ## (Under Development)
 
-## <a href="https://tictactoe-codequillcrafts.netlify.app" target=_blank>View Live</a>
+## <a href="https://codequillcrafts.github.io/Tic-Tac-Toe" target=_blank>View Live</a>
