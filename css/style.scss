@@ -54,7 +54,7 @@ section.choice {
     }
 }
 
-section.twoplayers {
+section.boxes-container {
     height: 40vh;
     width: 40vw;
     min-width: 320px;
@@ -66,36 +66,39 @@ section.twoplayers {
     .box {
         margin: 5px;
         background-color: #917296;
+        color: #351585;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
     }
 }
 
 section.btns {
-    // background: #000;
     width: max(40%, 320px);
     display: flex;
     justify-content: space-around;
     align-items: center;
 
     input {
+        font-size: 1.2rem;
         margin: 20px 0;
-        padding: 5px 10px;
+        padding: 10px 20px;
         border-radius: 5px;
         color: #927927;
         border-color: #927927;
     }
 }
 
-section.computer {
-    height: 40vh;
-    width: 40vw;
-    min-width: 320px;
-    background: #979379;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+section.result {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    .box {
-        margin: 5px;
-        background-color: #917296;
+    p.result {
+        font-size: 2.5rem;
+        text-align: center;
+        color: #297297;
     }
 }
