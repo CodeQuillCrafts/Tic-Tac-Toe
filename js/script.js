@@ -6,69 +6,56 @@ const result = document.querySelector("section.result p.result");
 let turn = "X";
 let moves = 0;
 
-twoplayersboxes.forEach(element => {
-    element.addEventListener('click', () => {
-        if (result.textContent)
-            return;
-        if (element.textContent === "") {
-            if (turn === 'X') {
-                element.textContent = "X";
-                if (wins(twoplayersboxes, 'X')) {
-                    result.textContent = "X wins";
-                }
-                turn = "O";
-            } else {
-                element.textContent = "O";
-                if (wins(twoplayersboxes, 'O')) {
-                    result.textContent = "O wins";
-                }
-                turn = "X";
-            }
-            moves++;
-            if (moves === 9 && !result.textContent) {
-                result.textContent = "Draw";
-            }
-        }
-    });
-});
+twoplayersboxes.forEach(box => box.addEventListener('click', handlePlayerMove));
+computerboxes.forEach(box => box.addEventListener('click', handleComputerMove));
 
-computerboxes.forEach(element => {
-    element.addEventListener('click', () => {
-        if (result.textContent)
-            return;
-        if (element.textContent === "") {
-            if (turn === 'X') {
-                element.textContent = "X";
-                if (wins(computerboxes, 'X')) {
-                    result.textContent = "X wins";
-                }
-                computerMove();
-            }
-            moves++;
-            if (moves === 9 && !result.textContent) {
-                result.textContent = "Draw";
-            }
+function handlePlayerMove() {
+    if (result.textContent) return;
+    if (this.textContent === "") {
+        this.textContent = turn;
+        if (wins(twoplayersboxes, turn)) {
+            result.textContent = `${turn} wins`;
         }
-    });
-});
-
-function computerMove() {
-    if (moves == 9)
-        return;
-    moves++;
-    let getRandomMove = random();
-    if (computerboxes[getRandomMove].textContent === '') {
-        computerboxes[getRandomMove].textContent = "O";
-        if (wins(computerboxes, 'O')) {
-            result.textContent = "O wins";
-        }
-    } else {
-        computerMove();
+        turn = (turn === "X") ? "O" : "X";
+        moves++;
+        checkDraw();
     }
 }
 
-function random() {
-    return Math.floor(Math.random() * 9)
+function handleComputerMove() {
+    if (result.textContent) return;
+    if (this.textContent === "") {
+        this.textContent = turn;
+        if (wins(computerboxes, turn)) {
+            result.textContent = `${turn} wins`;
+        }
+        turn = (turn === "X") ? "O" : "X";
+        moves++;
+        checkDraw();
+        if (!result.textContent) {
+            computerMove();
+        }
+    }
+}
+
+function computerMove() {
+    let emptyBoxes = Array.from(computerboxes).filter(box => box.textContent === "");
+    if (emptyBoxes.length > 0) {
+        let randomIndex = Math.floor(Math.random() * emptyBoxes.length);
+        emptyBoxes[randomIndex].textContent = turn;
+        if (wins(computerboxes, turn)) {
+            result.textContent = `${turn} wins`;
+        }
+        turn = (turn === "X") ? "O" : "X";
+        moves++;
+        checkDraw();
+    }
+}
+
+function checkDraw() {
+    if (moves === 9 && !result.textContent) {
+        result.textContent = "Draw";
+    }
 }
 
 function wins(level, p) {
