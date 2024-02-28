@@ -33,7 +33,9 @@ function handleComputerMove() {
         moves++;
         checkDraw();
         if (!result.textContent) {
-            computerMove();
+            setTimeout(() => {
+                computerMove();
+            }, 1500);
         }
     }
 }
