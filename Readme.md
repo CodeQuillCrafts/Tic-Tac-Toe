@@ -23,5 +23,5 @@
 <img src="images/Preview2.png" alt="img">
 <img src="images/Preview3.png" alt="img">
 
-## <a href="https://codequillcrafts.github.io/Tic-Tac-Toe" target=_blank>View Live At Github Pages</a
-## <a href="https://tictactoe-codequillcrafts.netlify.app/" target=_blank>View Live At Netlify</a
+## <a href="https://codequillcrafts.github.io/Tic-Tac-Toe" target=_blank>View Live At Github Pages</a>
+## <a href="https://tictactoe-codequillcrafts.netlify.app/" target=_blank>View Live At Netlify</a>
